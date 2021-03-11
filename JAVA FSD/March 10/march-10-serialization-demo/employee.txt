@@ -1,0 +1,6 @@
+ABC,John,Dow,john@email.com
+CDE,Marry,Public,marry@gmail.com
+EFG,Sun,Micro,sun@hotmail.com
+HIJ,Washington,kyle,kyle@email.com
+ZED,umme,ath,ath@gmail.com
+PQS,Ashwin,Chakra,ash@gmail.com
