@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean name="address" class="org.example.Setter_Injection.demo.bean.Address">
+
+<property name="addressLine1" value="Chennai"/>
+<property name="addressLine2" value="India"/>
+
+</bean>
+<bean name="person" class="org.example.Setter_Injection.demo.bean.Person">
+
+<property name="address" ref="address"/>
+<property name="id" value="1"/>
+<property name="name" value="John"/>
+</bean>
+
+</beans>
