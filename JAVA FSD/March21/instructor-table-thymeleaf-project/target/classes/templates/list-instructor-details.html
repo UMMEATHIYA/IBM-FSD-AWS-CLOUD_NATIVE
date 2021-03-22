@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h3>Instructor Details</h3>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>YouTube Channel</th>
+            <th>hobby</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tempInstructor : ${instructors}">
+            <td th:text="${tempInstructor.youtubeChannel}" />
+            <td th:text="${tempInstructor.hobby}" />
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>
