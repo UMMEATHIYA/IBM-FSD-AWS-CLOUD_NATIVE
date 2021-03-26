@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Account Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Account Directory</h3>
+    <hr>
+
+    <!-- Add a button -->
+    <a th:href="@{/accounts/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Account
+    </a>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+
+            <th>Account ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempAccount : ${accounts}">
+
+            <td th:text="${tempAccount.accountId}" />
+            <td th:text="${tempAccount.firstName}" />
+            <td th:text="${tempAccount.lastName}" />
+            <td th:text="${tempAccount.email}" />
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+
+
+
+
