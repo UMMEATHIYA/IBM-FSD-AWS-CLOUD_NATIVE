@@ -1,0 +1,80 @@
+CREATE TABLE IF NOT EXISTS `Country` (
+    ->     `id` INT NOT NULL AUTO_INCREMENT,
+    ->     `name` VARCHAR(40),
+    ->     PRIMARY KEY (`id`))
+    -> ENGINE = InnoDB;
+
+-----------------------------------------------------------------------------------------
+TRUNCATE TABLE `Country`;
+
+INSERT INTO `Country` (id, name) VALUES(1,'Brazil');
+INSERT INTO `Country` (id, name) VALUES(2,'United States');
+INSERT INTO `Country` (id, name) VALUES(3,'France');
+
+------------------------------------------------------------------------------------------
+
+
+ CREATE TABLE IF NOT EXISTS CITY
+    -> ID INT NOT NULL AUTO_INCREMENT,
+    -> NAME VARCHAR(40),
+    -> COUNTRY_ID INT,
+    -> PRIMARY KEY(ID),
+    -> FOREIGN KEY(COUNTRY_ID) REFERENCES COUNTRY(ID))
+    -> ENGINE = InnoDB;
+
+
+------------------------------------------------------------------------------------------
+TRUNCATE TABLE `City`;
+
+INSERT INTO `City` (name, country_id) VALUES('Curitiba',1);
+INSERT INTO `City` (name, country_id) VALUES('Rio de Janeiro',1);
+INSERT INTO `City` (name, country_id) VALUES('Manaus',1);
+INSERT INTO `City` (name, country_id) VALUES('Fortaleza',1);
+INSERT INTO `City` (name, country_id) VALUES('New York',2);
+INSERT INTO `City` (name, country_id) VALUES('Los Angeles',2);
+INSERT INTO `City` (name, country_id) VALUES('Atlanta',2);
+INSERT INTO `City` (name, country_id) VALUES('Paris',3);
+INSERT INTO `City` (name, country_id) VALUES('Lyon',3);
+------------------------------------------------------------------------------------------
+CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbuser';
+CREATE USER 'dbuser'@'%' IDENTIFIED BY 'dbuser';
+
+GRANT CREATE, DROP, GRANT OPTION, REFERENCES, ALTER, DELETE, INDEX, INSERT, SELECT, UPDATE ON TABLE `Country` TO 'dbuser'@'localhost';
+GRANT CREATE, DROP, GRANT OPTION, REFERENCES, ALTER, DELETE, INDEX, INSERT, SELECT, UPDATE ON TABLE `Country` TO 'dbuser'@'%';
+
+GRANT CREATE, DROP, GRANT OPTION, REFERENCES, ALTER, DELETE, INDEX, INSERT, SELECT, UPDATE ON TABLE `City` TO 'dbuser'@'localhost';
+GRANT CREATE, DROP, GRANT OPTION, REFERENCES, ALTER, DELETE, INDEX, INSERT, SELECT, UPDATE ON TABLE `City` TO 'dbuser'@'%';
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+    @DeleteMapping("/city/{id}")
+    public Map < String, Boolean > deleteCity(
+            @PathVariable(value = "id") Long cityId) throws ResourceNotFoundException {
+       City city = cityRepository.findById(cityId)
+                .orElseThrow(() -> new ResourceNotFoundException("Country not found :: " + cityId));
+
+        cityRepository.delete(city);
+        Map < String, Boolean > response = new HashMap < > ();
+       response.put("deleted", Boolean.TRUE);
+     return response;
+    }
+
+    @GetMapping("/city/id/{id}")
+    public ResponseEntity<List<CityResponseModel>> getByDetailsId(@PathVariable("id") String Id)
+    {
+        List<City> list=cityRepository.findById(Id);
+        List<CityResponseModel> responses=new ArrayList<CityResponseModel>();
+        Iterator<City> i=list.iterator();
+        while(i.hasNext())
+        {
+            City m=i.next();
+            CityResponseModel model=new CityResponseModel();
+            model.setId((int) m.getId());
+            model.setNAME(m.getNAME());
+            model.setCountry(m.getCountry());
+
+            responses.add(model);
+        }
+        return ResponseEntity.ok(responses);
+    }

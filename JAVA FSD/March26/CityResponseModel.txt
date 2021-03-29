@@ -1,0 +1,45 @@
+package com.example.springmysqlcountrymarch26project.shared;
+
+import com.example.springmysqlcountrymarch26project.model.Country;
+
+import javax.persistence.*;
+
+public class CityResponseModel {
+    private long id;
+    private String NAME;
+    private Country country;
+
+    public CityResponseModel() {
+
+    }
+
+    public CityResponseModel(long id, String NAME, Country country) {
+        this.id = id;
+        this.NAME = NAME;
+        this.country = country;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNAME() {
+        return NAME;
+    }
+
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+}
