@@ -9,4 +9,4 @@
   <li>Eureka Client</li>
   <li>Sleuth</li>
   </ol>
-![Sample Output](Zipkin.png)
+![image](https://github.com/UMMEATHIYA/IBM-FSD-AWS-CLOUD_NATIVE/blob/main/JAVA%20FSD/April%201/zipkin.PNG)
