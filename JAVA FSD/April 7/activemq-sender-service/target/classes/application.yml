@@ -1,0 +1,9 @@
+spring:
+  activemq:
+    broker-url:  tcp://LAPTOP-MIEEM8GE:61616
+    password: admin
+    user:
+      admin  application:
+        name: activemq-sender
+server:
+  port: 8081
