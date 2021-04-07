@@ -1,6 +1,13 @@
 <h2>Microservices - API Gateway & Load Balacing</h2>
-
-
+<h3><b>Usage</b></h3>
+<ol>
+  <li>The microservices API gateway also makes it possible for clients to use a single call to request data.</li>
+  <li>When working directly with microservices, a client may need to call several services to obtain enough information for just one screen of information.</li>
+</ol>
+<h4>Load Balancing Dependency</h4>
+<img width="651" alt="load" src="https://user-images.githubusercontent.com/43459908/113886555-6819fe80-97de-11eb-99c5-79e1114276f0.PNG">
+<h4>Eureka Output - Instances Registered</h4>
+<img width="942" alt="eureka" src="https://user-images.githubusercontent.com/43459908/113886541-63554a80-97de-11eb-9d6a-b0f73ee8152e.PNG">
 <h2>ActiveMQ</h2>
 <h4><b>Uses</b></h4>
 <ul>
